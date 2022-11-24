@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\Persistence\ManagerRegistry;
+
 class PageController extends AbstractController
 {
     #[Route('/page', name: 'app_page')]
@@ -42,4 +44,13 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
+    public function teamTemplate(ManagerRegistry $doctrine): Response{
+        $repository = $doctrine->getRepository(Team::class);
+        $team = $repository->findAll();
+        return $this->render('partials/_team.html.twig', 
+            compact('team')
+        );
+    }
+
 }

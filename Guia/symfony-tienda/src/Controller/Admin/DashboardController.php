@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Team;
 use App\Controller\Admin\TeamCrudController;
 use App\Entity\Product;
+use App\Entity\Producto;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -49,7 +50,8 @@ class DashboardController extends AbstractDashboardController{
         return [
             MenuItem::linkToUrl('Visit public website', null, '/'),
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('Team', 'fa fa-tags', Team::class)
+            MenuItem::linkToCrud('Team', 'fa fa-tags', Team::class),
+            MenuItem::linkToCrud('Product', 'fa fa-tags', Producto::class)
         ];
     }
 }

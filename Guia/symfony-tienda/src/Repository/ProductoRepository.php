@@ -41,6 +41,19 @@ class ProductoRepository extends ServiceEntityRepository
         }
     }
 
+    public function getFromCart(CartService $cart): array{
+        if (empty($cart->getCart())) {
+            return [];
+        }
+        $ids = implode(',', array_keys($cart->getCart()));
+
+        return $this->createQueryBuilder('p')
+            ->andWhere("p.id in ($ids)")
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return Producto[] Returns an array of Producto objects
 //     */

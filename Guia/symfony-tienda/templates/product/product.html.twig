@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ render(controller('App\\Controller\\ProductController::productTemplate')) }}
+    {{ include ('partials/_product.html.twig', {products:products}) }}
 
 
     <!-- Offer Start -->

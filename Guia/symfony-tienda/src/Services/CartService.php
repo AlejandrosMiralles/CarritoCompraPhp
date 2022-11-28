@@ -32,4 +32,8 @@ class CartService{
         $this->update($id, $quantity);
     }
 
+    public function delete(int $id){
+        $cart = $this->getCart();
+        unset($cart[$id]);
+    }
 }

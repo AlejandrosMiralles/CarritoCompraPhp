@@ -17,13 +17,19 @@ class CartService{
     public function getCart(): array {
         return $this->getSession()->get(self::KEY, []);
     }
-    public function add(int $id, int $quantity = 1){
+
+    public function update(int $id, $quantity ){
         //https://symfony.com/doc/current/session.html
         $cart = $this->getCart();
         //Sólo añadimos si no lo está 
         if (!array_key_exists($id, $cart))
             $cart[$id] = $quantity;
         $this->getSession()->set(self::KEY, $cart);
+    }
+
+
+    public function add(int $id, int $quantity = 1){
+        $this->update($id, $quantity);
     }
 
 }

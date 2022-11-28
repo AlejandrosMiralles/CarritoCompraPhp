@@ -26,12 +26,27 @@ class CartController extends AbstractController
     }
 
     #[Route('/', name: 'cart')]
-    public function cart(): Response{
+    public function cart(): Response
+    {
         $products = $this->repository->getFromCart($this->cart);
-        return $this->render('cart/index.html.twig', [
-            'products' => '$products',
-        ]);
+        //hay que añadir la cantidad de cada producto
+        $items = [];
+        $totalCart = 0;
+        foreach($products as $product){
+            $item = [
+                "id"=> $product->getId(),
+                "name" => $product->getName(),
+                "price" => $product->getPrice(),
+                "photo" => $product->getPhoto(),
+                "quantity" => $this->cart->getCart()[$product->getId()]
+            ];
+            $totalCart += $item["quantity"] * $item["price"];
+            $items[] = $item;
+        }
+
+        return $this->render('cart/index.html.twig', ['items' => $items, 'totalCart' => $totalCart]);
     }
+
 
 
 

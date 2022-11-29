@@ -22,8 +22,8 @@ class CartService{
         //https://symfony.com/doc/current/session.html
         $cart = $this->getCart();
         //Sólo añadimos si no lo está 
-        if (!array_key_exists($id, $cart))
-            $cart[$id] = $quantity;
+        $cart[$id] = $quantity;
+        
         $this->getSession()->set(self::KEY, $cart);
     }
 

@@ -1,5 +1,6 @@
 //Immediately-Invoked Function Expression (IIFE)
 (function(){
+  //Events to see the product
     const infoProduct = $("#infoProduct");
     $( "a.open-info-product" ).click(function(event) {
       event.preventDefault();
@@ -16,6 +17,7 @@
       infoProduct.modal('hide');
     });
 
+    //Events to add a product to the cart
     const cartProduct = $("#cart-modal");
     $("a.open-cart-product").click(function(event){
       event.preventDefault();
@@ -27,15 +29,15 @@
         $( cartProduct ).find( "#productName" ).attr("data-id", data.id);
         cartProduct.modal('show');
       })
-    });
-    
-    $("#updateCart").click(function(event){
-      id = $("#productName").attr("data-id");
-      quantity = $("#quantity").val();
-      href = `/cart/update/${id}/${quantity}`;
-      
-      $.get(href);
 
+      //Event to update the product's quantity
+      $("#updateCart").click(function(event){
+        quantity = $("#quantity").val();
+        hrefUpdateCart = `/cart/update/${id}/${quantity}`;
+        
+        $.get(hrefUpdateCart);
+  
+      });
     });
 
     $(".closeCart").click(function (e) {

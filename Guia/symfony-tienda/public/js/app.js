@@ -1,6 +1,19 @@
 //Immediately-Invoked Function Expression (IIFE)
 (function(){
   //Events to see the product
+    function updateTotalCartItems(){
+      cartElement = $("#navCartLink");
+      hrefTotalitems = "/cart/totalItems";
+      totalElements= -1;
+      $.get(hrefTotalitems, function(data){
+        totalElements = data.totalCart;
+        cartElementText = "Cart (" + totalElements + ")";      
+        cartElement.text(cartElementText);
+      });
+
+      
+    }
+
     const infoProduct = $("#infoProduct");
     $( "a.open-info-product" ).click(function(event) {
       event.preventDefault();
@@ -38,6 +51,8 @@
       
       $.get(hrefUpdateCart);
 
+      updateTotalCartItems();
+
     });
 
     $(".closeCart").click(function (e) {
@@ -54,7 +69,7 @@
 
     function updateTotalCartPrice(){
       priceElement = $("#totalCart");
-      priceElementInnerHtml = "";
+      priceElementText = "";
 
       items = $(".itemOnTheCart");
       totalPrice = 0;
@@ -68,8 +83,8 @@
         totalPrice += itemPrice * itemQuantity;
       }
 
-      priceElementInnerHtml = `Total ${ totalPrice}€`;
-      priceElement.html(priceElementInnerHtml);
+      priceElementText = `Total ${ totalPrice}€`;
+      priceElement.text(priceElementText);
 
     }
 
@@ -86,5 +101,7 @@
 
 
       updateTotalCartPrice();
+
+      updateTotalCartItems();
     });
 })();

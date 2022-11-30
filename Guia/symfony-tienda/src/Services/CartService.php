@@ -38,4 +38,10 @@ class CartService{
 
         $this->getSession()->set(self::KEY, $cart);
     }
+
+    public function totalItems(){
+        $cart = $this->getCart();
+
+        return count($cart);
+    }
 }

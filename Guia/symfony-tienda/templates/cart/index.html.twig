@@ -17,13 +17,13 @@
                                 <img class="img-fluid h-100" src="{{ asset('img/' ~ item.photo) }}" style="object-fit: cover;">
                             </div>
                             <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
-                                <div class="p-4">
+                                <div class="itemOnTheCart p-4">
                                     <div class="d-flex mb-3">
-                                        <h4 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">{{ item.price}} €</h4>
+                                        <h4 item-price="{{ item.price }}" class="text-uppercase border-start border-5 border-primary ps-3 mb-4">{{ item.price}} €</h4>
                                     </div>
-                                    <h5 class="text-uppercase mb-3">{{ item.name }} * {{ item.quantity}}</h5>
+                                    <h5 item-quantity="{{ item.quantity }}" class="text-uppercase mb-3">{{ item.name }} * {{ item.quantity}}</h5>
                                     
-                                    <a href="" class="btn btn-primary py-2 px-4">Remove from cart</a>
+                                    <a href="" id="removeProduct" item-id="{{item.id}}" class="btn btn-primary py-2 px-4">Remove from cart</a>
                                 </div>
                             </div>
                         </div>

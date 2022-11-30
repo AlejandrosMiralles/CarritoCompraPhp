@@ -35,5 +35,7 @@ class CartService{
     public function delete(int $id){
         $cart = $this->getCart();
         unset($cart[$id]);
+
+        $this->getSession()->set(self::KEY, $cart);
     }
 }

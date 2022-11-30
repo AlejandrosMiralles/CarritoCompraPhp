@@ -87,6 +87,22 @@ class CartController extends AbstractController
 
     }
 
+    #[Route('/delete/{id}', name: 'cart_delete', methods: ['POST'], requirements: ['id' => '\d+'])]
+    public function cart_delete(int $id): Response{
+        $product = $this->repository->find($id);
+        if (!$product)
+            return new JsonResponse("[]", Response::HTTP_NOT_FOUND);
+
+        $this->cart->delete($id);
+        
+        $data = [
+            "totalCart" => count($this->cart->getCart())
+        ];
+
+        return new JsonResponse($data, Response::HTTP_OK);
+
+    }
+
     
 
 }

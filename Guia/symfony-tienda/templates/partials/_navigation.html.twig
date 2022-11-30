@@ -20,6 +20,13 @@
                     <a href="{{ path('blog') }}" class="dropdown-item">Blog Grid</a>
                     <a href="{{ path('detail') }}" class="dropdown-item">Blog Detail</a>
                 </div>
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.name }} - Logout</a></li>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-in sr-icons"></i> Login</a></li>
+                <a href="{{ path('app_register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-user-secret sr-icons"></i> Register</a></li>
+            {% endif %}
+
             </div>
             <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
         </div>

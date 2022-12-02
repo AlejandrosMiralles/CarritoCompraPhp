@@ -6,11 +6,18 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-nav ms-auto py-0">
+            
             <a href="{{ path('app_page') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Home</a>
             <a href="{{ path('about') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'about')  ? 'active': ''}}">About</a>
             <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Service</a>
             <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Product</a>
             <a href="{{ path('cart') }}" id="navCartLink" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'cart')  ? 'active': ''}}"><i class="bi bi-cart"></i> Cart ({{ cart.totalItems }})</a>
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}" class="nav-item nav-link"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.email }} - Logout</a></li>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Login</a></li>
+                <a href="{{ path('app_register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Register</a></li>
+            {% endif %}
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">
@@ -20,12 +27,7 @@
                     <a href="{{ path('blog') }}" class="dropdown-item">Blog Grid</a>
                     <a href="{{ path('detail') }}" class="dropdown-item">Blog Detail</a>
                 </div>
-            {% if app.user %}
-                <a href="{{ path('app_logout') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.email }} - Logout</a></li>
-            {% else %}
-                <a href="{{ path('app_login') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-in sr-icons"></i> Login</a></li>
-                <a href="{{ path('app_register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-user-secret sr-icons"></i> Register</a></li>
-            {% endif %}
+            
 
             </div>
             <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>

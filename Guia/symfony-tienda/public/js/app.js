@@ -1,6 +1,6 @@
 //Immediately-Invoked Function Expression (IIFE)
 (function(){
-  //Events to see the product
+    //Event to update the number of Items on the car that is shown on the nav
     function updateTotalCartItems(){
       cartElement = $("#navCartLink");
       hrefTotalitems = "/cart/totalItems";
@@ -14,6 +14,8 @@
       
     }
 
+
+    //Events to see the product
     const infoProduct = $("#infoProduct");
     $( "a.open-info-product" ).click(function(event) {
       event.preventDefault();
@@ -30,7 +32,9 @@
       infoProduct.modal('hide');
     });
 
-    //Events to add a product to the cart
+
+
+    //Events to add a product to the cart 
     const cartProduct = $("#cart-modal");
     $("a.open-cart-product").click(function(event){
       event.preventDefault();
@@ -44,6 +48,9 @@
       })
     });
 
+
+
+    
     //Event to update the product's quantity
     $("#updateCart").click(function(event){
       quantity = $("#quantity").val();
@@ -66,7 +73,7 @@
 
 
 
-
+    //Event to update the number of items on the cart
     function updateTotalCartPrice(){
       priceElement = $("#totalCart");
       priceElementText = "";

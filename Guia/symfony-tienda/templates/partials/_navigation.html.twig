@@ -21,7 +21,7 @@
                     <a href="{{ path('detail') }}" class="dropdown-item">Blog Detail</a>
                 </div>
             {% if app.user %}
-                <a href="{{ path('app_logout') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.name }} - Logout</a></li>
+                <a href="{{ path('app_logout') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.email }} - Logout</a></li>
             {% else %}
                 <a href="{{ path('app_login') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-sign-in sr-icons"></i> Login</a></li>
                 <a href="{{ path('app_register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}"><i class="fa fa-user-secret sr-icons"></i> Register</a></li>

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry ;
 
 class ProductController extends AbstractController
 {
